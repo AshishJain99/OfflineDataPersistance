@@ -11,19 +11,20 @@ class Repository{
     
     static let shared = Repository()
     
+    // Singleton Class for repository
     private init(){
         
     }
     
+    
     func getEmployeeData(completion:@escaping([IndividualEmployeeData]?)->Void){
-//        checkOfflineEmployeeData(){ employeeData in
-//        completion(employeeData)
-//        }
-        
+        // check if data is avaible offline
         checkOfflineEmployeeData { allEmployeeOfflineData in
             if let allEmployeeOfflineData = allEmployeeOfflineData{
                 completion(allEmployeeOfflineData)
             }else{
+                
+                // fetch data from API
                 self.fetchData(){ data in
                     completion(data)
                 }
@@ -31,7 +32,7 @@ class Repository{
         }
     }
     
-    func checkOfflineEmployeeData(completion:@escaping([IndividualEmployeeData]?)->Void){
+    private func checkOfflineEmployeeData(completion:@escaping([IndividualEmployeeData]?)->Void){
         DispatchQueue.main.async {
             guard let CDEmployeeData = PersistentStorage.shared.fetchManagedObject(managedObject: CDEmployee.self) else{
                 completion(nil)
@@ -66,30 +67,28 @@ class Repository{
         }
     }
     
-    func fetchData(completion:@escaping([IndividualEmployeeData]?)->Void){
+    private func fetchData(completion:@escaping([IndividualEmployeeData]?)->Void){
         ApiManager.shared.fetchApiData { result in
             switch result{
                 
             case .success(let data):
     //                print(data)
+                
+                // save data to core data
                 self.persistData(data: data)
                 completion(self.allEmployeeToInidividual(data: data))
             case .failure(let error):
+                
+                // case if data is not recived
                 completion(nil)
                 print(error)
             }
         }
     }
     
-    func persistData(data:EmployeeData){
+    private func persistData(data:EmployeeData){
         let allEmployeeData = data.data
         
-//        if let CDAllEmployeeData = PersistentStorage.shared.fetchManagedObject(managedObject: CDEmployee.self) {
-//            for employee in CDAllEmployeeData{
-//                print(employee.employee_salary)
-//            }
-//            
-//        }else{
             DispatchQueue.main.async {
                 for employee in allEmployeeData {
                             print(employee)
@@ -104,15 +103,14 @@ class Repository{
                             PersistentStorage.shared.saveContext()
                         }
                 
-                DispatchQueue.main.asyncAfter(deadline: .now()+2){
-                                let x = PersistentStorage.shared.fetchManagedObject(managedObject: CDEmployee.self)
-                                print(x,"dataaaaaxxxx")
-                            }
+//                DispatchQueue.main.asyncAfter(deadline: .now()+2){
+//                                let x = PersistentStorage.shared.fetchManagedObject(managedObject: CDEmployee.self)
+////                                print(x,"dataaaaaxxxx")
+//                            }
             }
-//        }
     }
     
-    func allEmployeeToInidividual(data:EmployeeData)->[IndividualEmployeeData]{
+    private func allEmployeeToInidividual(data:EmployeeData)->[IndividualEmployeeData]{
         
         
         var allEmployeeData:[IndividualEmployeeData] = []
@@ -121,12 +119,10 @@ class Repository{
             let salary = Int(employeeData.employee_salary)
             let id = Int(employeeData.id)
             let age = Int(employeeData.employee_age)
-//            guard
             let name = employeeData.employee_name
             
             
             let profile = employeeData.profile_image
-//            else{continue}
             
             let individualData = IndividualEmployeeData(id: id, employee_name: name, employee_salary: salary, employee_age: age, profile_image: profile)
             

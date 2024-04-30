@@ -18,10 +18,10 @@ class ViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view.
-//        viewModel.fetchData()
         viewModel.fetchAllEmployeeData()
         tableView.register(UINib(nibName: "EmployeeTableViewCell", bundle: nil), forCellReuseIdentifier: "cell")
+        
+        // configure ViewModel
         configuration()
     }
 }
@@ -54,6 +54,7 @@ extension ViewController{
         viewModel.fetchAllEmployeeData()
     }
     
+    //Observer for view model
     func observerEvent(){
         viewModel.eventHandler = {[weak self] event in
             guard let self = self else{return}
@@ -61,11 +62,9 @@ extension ViewController{
             switch event{
                 
             case .loading:
-                break
-            case .stopLoading:
-                break
+                break // update user for data
             case .dataLoaded:
-//                print(viewModel.allEmployeeData)
+//                print(viewModel.allEmployeeData) // debug print for checking data
                 allEmployeeData = viewModel.allEmployeeData
                 DispatchQueue.main.async {
                     self.tableView.reloadData()

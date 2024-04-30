@@ -14,14 +14,17 @@ class ViewModel{
     
     var eventHandler: ((_ event:Event)->Void)?
     
-    
+    // Fetch data from repository
     func fetchAllEmployeeData(){
         self.eventHandler?(.loading)
         Repository.shared.getEmployeeData { data in
+            
+            // if data is there
             if let data = data{
                 self.allEmployeeData = data
                 self.eventHandler?(.dataLoaded)
             }else{
+                // if data is not available 
                 self.eventHandler?(.errorInLoading)
             }
         
@@ -33,7 +36,6 @@ class ViewModel{
 extension ViewModel{
     enum Event{
         case loading
-        case stopLoading
         case dataLoaded
         case errorInLoading
     }
