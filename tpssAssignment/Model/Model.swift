@@ -9,12 +9,12 @@ import Foundation
 
 struct EmployeeData: Codable {
     let status: String
-    let data: [Datum]
+    let data: [IndividualEmployeeData]
     let message: String
 }
 
 // MARK: - Datum
-struct Datum: Codable {
+struct IndividualEmployeeData: Codable {
     let id: Int
     let employee_name: String
     let employee_salary, employee_age: Int

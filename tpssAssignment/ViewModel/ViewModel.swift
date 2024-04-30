@@ -9,55 +9,33 @@ import Foundation
 
 class ViewModel{
     
+    var allEmployeeData:[IndividualEmployeeData] = []
+
     
-    func fetchData(){
-        ApiManager.shared.fetchApiData { result in
-            switch result{
-                
-            case .success(let data):
-//                print(data)
-                self.persistData(data: data)
-            case .failure(let error):
-                print(error)
+    var eventHandler: ((_ event:Event)->Void)?
+    
+    
+    func fetchAllEmployeeData(){
+        self.eventHandler?(.loading)
+        Repository.shared.getEmployeeData { data in
+            if let data = data{
+                self.allEmployeeData = data
+                self.eventHandler?(.dataLoaded)
+            }else{
+                self.eventHandler?(.errorInLoading)
             }
+        
         }
-    }
-    
-    
-    func persistData(data:EmployeeData){
-        let allEmployeeData = data.data
-        
-        if let CDAllEmployeeData = PersistentStorage.shared.fetchManagedObject(managedObject: CDEmployee.self) {
-            let employee = CDAllEmployeeData[0]
-            for employee in CDAllEmployeeData{
-                print(employee.employee_salary)
-            }
-            
-        }else{
-            DispatchQueue.main.async {
-                for employee in allEmployeeData {
-                            print(employee)
-                            let employeeData = CDEmployee(context: PersistentStorage.shared.context)
-                            employeeData.id = Int16(employee.id)
-                            employeeData.employee_name = employee.employee_name
-                    print(employee.employee_salary)
-                            employeeData.employee_salary = Int64(employee.employee_salary)
-                            employeeData.employee_age = Int16(employee.employee_age)
-                            employeeData.profile_image = employee.profile_image
-                            print("")
-                            PersistentStorage.shared.saveContext()
-                        }
-                
-                DispatchQueue.main.asyncAfter(deadline: .now()+2){
-                                let x = PersistentStorage.shared.fetchManagedObject(managedObject: CDEmployee.self)
-                                print(x,"dataaaaaxxxx")
-                            }
-            }
-        }
-        
-        
-        
-        
     }
     
 }
+
+extension ViewModel{
+    enum Event{
+        case loading
+        case stopLoading
+        case dataLoaded
+        case errorInLoading
+    }
+}
+

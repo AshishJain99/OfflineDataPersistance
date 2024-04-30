@@ -11,6 +11,7 @@
 		9EA70B942BE10540002055C5 /* PersistanceStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9EA70B932BE10540002055C5 /* PersistanceStorage.swift */; };
 		9EA70B9B2BE10920002055C5 /* CDEmployee+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9EA70B992BE10920002055C5 /* CDEmployee+CoreDataClass.swift */; };
 		9EA70B9C2BE10920002055C5 /* CDEmployee+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9EA70B9A2BE10920002055C5 /* CDEmployee+CoreDataProperties.swift */; };
+		9EA70B9F2BE10B55002055C5 /* Repository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9EA70B9E2BE10B55002055C5 /* Repository.swift */; };
 		9EF683872BE0FB35005D21EE /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9EF683862BE0FB35005D21EE /* AppDelegate.swift */; };
 		9EF683892BE0FB35005D21EE /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9EF683882BE0FB35005D21EE /* SceneDelegate.swift */; };
 		9EF6838B2BE0FB35005D21EE /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9EF6838A2BE0FB35005D21EE /* ViewController.swift */; };
@@ -30,6 +31,7 @@
 		9EA70B932BE10540002055C5 /* PersistanceStorage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersistanceStorage.swift; sourceTree = "<group>"; };
 		9EA70B992BE10920002055C5 /* CDEmployee+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CDEmployee+CoreDataClass.swift"; sourceTree = "<group>"; };
 		9EA70B9A2BE10920002055C5 /* CDEmployee+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CDEmployee+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		9EA70B9E2BE10B55002055C5 /* Repository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Repository.swift; sourceTree = "<group>"; };
 		9EF683832BE0FB35005D21EE /* tpssAssignment.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = tpssAssignment.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9EF683862BE0FB35005D21EE /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		9EF683882BE0FB35005D21EE /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -60,10 +62,10 @@
 		9EA70B8B2BE10419002055C5 /* CoreData */ = {
 			isa = PBXGroup;
 			children = (
+				9EA70B932BE10540002055C5 /* PersistanceStorage.swift */,
 				9EA70B992BE10920002055C5 /* CDEmployee+CoreDataClass.swift */,
 				9EA70B9A2BE10920002055C5 /* CDEmployee+CoreDataProperties.swift */,
 				9EA70B8C2BE1042D002055C5 /* CoreDataModel.xcdatamodeld */,
-				9EA70B932BE10540002055C5 /* PersistanceStorage.swift */,
 			);
 			path = CoreData;
 			sourceTree = "<group>";
@@ -72,6 +74,7 @@
 			isa = PBXGroup;
 			children = (
 				9EA70B8B2BE10419002055C5 /* CoreData */,
+				9EA70B9E2BE10B55002055C5 /* Repository.swift */,
 			);
 			path = Repository;
 			sourceTree = "<group>";
@@ -103,8 +106,6 @@
 				9EF683A52BE0FEE2005D21EE /* ViewModel */,
 				9EF683862BE0FB35005D21EE /* AppDelegate.swift */,
 				9EF683882BE0FB35005D21EE /* SceneDelegate.swift */,
-				9EF6838A2BE0FB35005D21EE /* ViewController.swift */,
-				9EF6838C2BE0FB35005D21EE /* Main.storyboard */,
 				9EF6838F2BE0FB36005D21EE /* Assets.xcassets */,
 				9EF683912BE0FB36005D21EE /* LaunchScreen.storyboard */,
 				9EF683942BE0FB36005D21EE /* Info.plist */,
@@ -123,6 +124,8 @@
 		9EF6839B2BE0FB4B005D21EE /* View */ = {
 			isa = PBXGroup;
 			children = (
+				9EF6838A2BE0FB35005D21EE /* ViewController.swift */,
+				9EF6838C2BE0FB35005D21EE /* Main.storyboard */,
 				9EF683A82BE0FF77005D21EE /* EmployeeTableViewCell.swift */,
 				9EF683A92BE0FF77005D21EE /* EmployeeTableViewCell.xib */,
 			);
@@ -228,6 +231,7 @@
 				9EF6838B2BE0FB35005D21EE /* ViewController.swift in Sources */,
 				9EF683AA2BE0FF77005D21EE /* EmployeeTableViewCell.swift in Sources */,
 				9EF683872BE0FB35005D21EE /* AppDelegate.swift in Sources */,
+				9EA70B9F2BE10B55002055C5 /* Repository.swift in Sources */,
 				9EF683A12BE0FC1A005D21EE /* ApiManager.swift in Sources */,
 				9EA70B9C2BE10920002055C5 /* CDEmployee+CoreDataProperties.swift in Sources */,
 				9EA70B9B2BE10920002055C5 /* CDEmployee+CoreDataClass.swift in Sources */,
