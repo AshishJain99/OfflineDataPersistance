@@ -82,7 +82,7 @@
 		9EF6837A2BE0FB35005D21EE = {
 			isa = PBXGroup;
 			children = (
-				9EF683852BE0FB35005D21EE /* tpssAssignment */,
+				9EF683852BE0FB35005D21EE /* OfflineDataPersistance */,
 				9EF683842BE0FB35005D21EE /* Products */,
 			);
 			sourceTree = "<group>";
@@ -95,7 +95,7 @@
 			name = Products;
 			sourceTree = "<group>";
 		};
-		9EF683852BE0FB35005D21EE /* tpssAssignment */ = {
+		9EF683852BE0FB35005D21EE /* OfflineDataPersistance */ = {
 			isa = PBXGroup;
 			children = (
 				9EF683A22BE0FC7E005D21EE /* Constants */,
@@ -110,7 +110,7 @@
 				9EF683912BE0FB36005D21EE /* LaunchScreen.storyboard */,
 				9EF683942BE0FB36005D21EE /* Info.plist */,
 			);
-			path = tpssAssignment;
+			path = OfflineDataPersistance;
 			sourceTree = "<group>";
 		};
 		9EF6839A2BE0FB42005D21EE /* Helper */ = {
@@ -394,7 +394,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 29M4S87GY3;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = tpssAssignment/Info.plist;
+				INFOPLIST_FILE = OfflineDataPersistance/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
@@ -422,7 +422,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 29M4S87GY3;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = tpssAssignment/Info.plist;
+				INFOPLIST_FILE = OfflineDataPersistance/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
